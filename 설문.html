@@ -1,0 +1,583 @@
+<div id="omyfit-test">
+  <style>
+    #omyfit-test {
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fff;
+      color: #595959;
+      max-width: 520px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    #omyfit-test * { box-sizing: border-box; }
+
+    .omy-card {
+      background: #fff;
+      padding: 32px 18px;
+      text-align: center;
+      min-height: 100vh;
+    }
+
+    .omy-small {
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .omy-title {
+      font-size: 22px;
+      line-height: 1.35;
+      color: #111;
+      margin: 0 0 16px;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .omy-desc {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #666;
+      margin: 0 0 24px;
+      word-break: keep-all;
+    }
+
+    .omy-btn {
+      width: 100%;
+      border: 0;
+      padding: 15px 18px;
+      background: #000;
+      color: #fff;
+      font-size: 13px;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    }
+
+    .omy-start-img {
+      width: calc(100% + 36px);
+      margin: -32px -18px 32px;
+      display: block;
+    }
+
+    .omy-question-wrap { padding-top: 26px; }
+
+    .omy-progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 54px;
+    }
+
+    .omy-back-btn {
+      width: 22px;
+      height: 22px;
+      border: 0;
+      border-radius: 50%;
+      background: #000;
+      color: #fff;
+      font-size: 15px;
+      line-height: 22px;
+      padding: 0;
+      cursor: pointer;
+      flex: 0 0 22px;
+    }
+
+    .omy-progress-track {
+      width: 100%;
+      height: 19px;
+      background: #eee;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .omy-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #000;
+      border-radius: 999px;
+      transition: width 0.28s ease;
+    }
+
+    .omy-option {
+      background: #fff;
+      color: #222;
+      border: 1px solid #e8e8e8;
+      box-shadow: none;
+      text-align: left;
+      line-height: 1.5;
+      margin-top: 10px;
+      border-radius: 12px;
+    }
+
+    .omy-option:hover { background: #f7f7f7; }
+
+    .omy-loading-wrap { padding-top: 120px; }
+
+    .omy-spinner {
+      width: 54px;
+      height: 54px;
+      border: 3px solid #eee;
+      border-top: 3px solid #111;
+      border-radius: 50%;
+      margin: 0 auto 28px;
+      animation: omySpin 1s linear infinite;
+    }
+
+    .omy-check {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #000;
+      color: #fff;
+      font-size: 32px;
+      line-height: 54px;
+      margin: 0 auto 28px;
+    }
+
+    @keyframes omySpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .omy-result-page { text-align: center; }
+
+    .omy-main-img {
+      width: calc(100% + 36px);
+      margin: -32px -18px 24px;
+      display: block;
+    }
+
+    .omy-line {
+      width: 28px;
+      height: 2px;
+      background: #ddd;
+      margin: 14px auto 24px;
+    }
+
+    .omy-black-btn {
+      display: block;
+      width: 100%;
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      border: 0;
+      padding: 15px 18px;
+      font-size: 13px;
+      margin: 24px auto 0;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.22);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .omy-sub-title {
+      font-size: 13px;
+      margin: 34px 0 16px;
+      color: #595959;
+    }
+
+    .omy-product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 80px;
+    }
+
+    .omy-rec-card {
+      text-decoration: none;
+      color: #595959;
+      text-align: center;
+    }
+
+    .omy-rec-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1.3;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+      background: #f5f5f5;
+    }
+
+    .omy-rec-info {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px 6px;
+      margin-top: 8px;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+    }
+
+    .omy-rec-info strong {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 4px;
+      color: #333;
+    }
+
+    .omy-rec-info span {
+      font-size: 11px;
+      color: #777;
+    }
+
+    .omy-rec-card p {
+      font-size: 11px;
+      line-height: 1.6;
+      color: #555;
+      margin-top: 10px;
+      word-break: keep-all;
+    }
+
+    .omy-restart {
+      margin-top: 90px;
+      margin-bottom: 80px;
+      position: relative;
+    }
+  </style>
+
+  <div class="omy-card" id="omyStart">
+    <img class="omy-start-img" src="https://via.placeholder.com/600x720" alt="오마이핏 잠옷 추천 테스트">
+
+    <div class="omy-small">OH MY FIT TEST</div>
+
+    <h2 class="omy-title">
+      나에게 맞는<br>
+      니플프리 잠옷 찾기
+    </h2>
+
+    <div class="omy-line"></div>
+
+    <p class="omy-desc">
+      브라 없이도 편하고,<br>
+      내 몸에 더 잘 맞는 잠옷을 찾아드릴게요.
+    </p>
+
+    <button class="omy-btn" onclick="omyStartTest()">진단 시작하기</button>
+  </div>
+
+  <div class="omy-card" id="omyQuestion" style="display:none;">
+    <div class="omy-question-wrap">
+      <div class="omy-progress-wrap">
+        <button class="omy-back-btn" onclick="omyPrevQuestion()">‹</button>
+        <div class="omy-progress-track">
+          <div class="omy-progress-fill" id="omyProgressFill"></div>
+        </div>
+      </div>
+
+      <h2 class="omy-title" id="omyQuestionTitle"></h2>
+      <div id="omyOptions"></div>
+    </div>
+  </div>
+
+  <div class="omy-card" id="omyLoading" style="display:none;"></div>
+
+  <div class="omy-card" id="omyResult" style="display:none;"></div>
+
+  <script>
+    const omyQuestions = [
+      {
+        q: "집에서 잠옷을 입을 때 가장 신경 쓰이는 건?",
+        options: [
+          { text: "비침이 제일 걱정돼요", type: "A" },
+          { text: "답답한 착용감이 싫어요", type: "B" },
+          { text: "사진 찍었을 때 예뻤으면 해요", type: "C" },
+          { text: "가슴 모양이 신경 쓰여요", type: "D" }
+        ]
+      },
+      {
+        q: "브라 없는 잠옷을 고를 때 중요한 건?",
+        options: [
+          { text: "안감이 자연스럽게 가려주는 것", type: "A" },
+          { text: "가슴 부분 통풍이 잘 되는 것", type: "B" },
+          { text: "여리여리한 분위기", type: "C" },
+          { text: "브라캡을 넣고 뺄 수 있는 것", type: "D" }
+        ]
+      },
+      {
+        q: "가장 자주 입을 상황은?",
+        options: [
+          { text: "기숙사나 자취방에서 편하게", type: "A" },
+          { text: "더운 날에도 답답하지 않게", type: "B" },
+          { text: "여행이나 호캉스에서 예쁘게", type: "C" },
+          { text: "택배 받을 때도 민망하지 않게", type: "D" }
+        ]
+      },
+      {
+        q: "선호하는 잠옷 스타일은?",
+        options: [
+          { text: "깔끔한 셔츠형 세트", type: "A" },
+          { text: "가볍고 시원한 나시형", type: "B" },
+          { text: "가디건 세트나 원피스", type: "C" },
+          { text: "브라캡 옵션이 있는 실용적인 디자인", type: "D" }
+        ]
+      }
+    ];
+
+    const omyResults = {
+      A: {
+        title: "니플프리 안감 잠옷",
+        desc: "비침 걱정을 줄이고, 브라 없이도 자연스럽게 가려지는 안정감이 필요한 타입이에요.",
+        mainImage: "https://via.placeholder.com/600x720",
+        mainLink: "#",
+        products: [
+          {
+            image: "https://via.placeholder.com/300x390",
+            name: "시루",
+            option: "니플프리 SET",
+            text: "안감이 덧대어져<br>브라 없이도 편안한<br>데일리 잠옷",
+            link: "#"
+          },
+          {
+            image: "https://via.placeholder.com/300x390",
+            name: "로망",
+            option: "시그니처 SET",
+            text: "기숙사와 자취방에서<br>민망함 없이 입기 좋은<br>편안한 잠옷",
+            link: "#"
+          }
+        ]
+      },
+      B: {
+        title: "통풍 좋은 에어홀 잠옷",
+        desc: "답답한 착용감보다 가볍고 쾌적한 편안함이 중요한 타입이에요.",
+        mainImage: "https://via.placeholder.com/600x720",
+        mainLink: "#",
+        products: [
+          {
+            image: "https://via.placeholder.com/300x390",
+            name: "소프트 블루",
+            option: "에어홀 SET",
+            text: "가슴 부분 통풍을 도와<br>더운 날에도 산뜻한<br>니플프리 잠옷",
+            link: "#"
+          },
+          {
+            image: "https://via.placeholder.com/300x390",
+            name: "나시 가디건",
+            option: "3피스 SET",
+            text: "가볍게 걸쳐 입기 좋고<br>답답함을 줄여주는<br>여름 잠옷",
+            link: "#"
+          }
+        ]
+      },
+      C: {
+        title: "여행용 감성 잠옷",
+        desc: "편안함은 물론, 여행지와 호캉스에서 사진까지 예쁘게 남기고 싶은 타입이에요.",
+        mainImage: "https://via.placeholder.com/600x720",
+        mainLink: "#",
+        products: [
+          {
+            image: "https://via.placeholder.com/300x390",
+            name: "보니 아이보리",
+            option: "2피스 SET",
+            text: "사진에 예쁘게 담기는<br>사랑스러운 무드의<br>여행 잠옷",
+            link: "#"
+          },
+          {
+            image: "https://via.placeholder.com/300x390",
+            name: "하트 트리",
+            option: "요루면 SET",
+            text: "호캉스와 여행에서<br>여리여리하게 입기 좋은<br>감성 잠옷",
+            link: "#"
+          }
+        ]
+      },
+      D: {
+        title: "브라캡 옵션 잠옷",
+        desc: "브라 없이도 실루엣이 자연스럽게 정돈되는 느낌이 중요한 타입이에요.",
+        mainImage: "https://via.placeholder.com/600x720",
+        mainLink: "#",
+        products: [
+          {
+            image: "https://via.placeholder.com/300x390",
+            name: "시루",
+            option: "브라캡 옵션",
+            text: "탈부착 브라캡으로<br>원하는 날에 맞춰<br>편하게 조절 가능",
+            link: "#"
+          },
+          {
+            image: "https://via.placeholder.com/300x390",
+            name: "로망",
+            option: "실루엣 보완 SET",
+            text: "자연스러운 가슴 라인을<br>원하는 분에게 잘 맞는<br>실용적인 잠옷",
+            link: "#"
+          }
+        ]
+      }
+    };
+
+    let omyCurrent = 0;
+    let omyScores = { A: 0, B: 0, C: 0, D: 0 };
+    let omyAnswers = [];
+
+    function omyStartTest() {
+      document.getElementById("omyStart").style.display = "none";
+      document.getElementById("omyQuestion").style.display = "block";
+      omyShowQuestion();
+    }
+
+    function omyShowQuestion() {
+      const question = omyQuestions[omyCurrent];
+
+      const progressPercent = (omyCurrent / omyQuestions.length) * 100;
+      document.getElementById("omyProgressFill").style.width = progressPercent + "%";
+
+      document.getElementById("omyQuestionTitle").innerText = question.q;
+
+      const optionBox = document.getElementById("omyOptions");
+      optionBox.innerHTML = "";
+
+      question.options.forEach(function(option) {
+        const btn = document.createElement("button");
+        btn.className = "omy-btn omy-option";
+        btn.innerText = option.text;
+
+        btn.onclick = function() {
+          omyAnswers[omyCurrent] = option.type;
+          omyCurrent++;
+
+          if (omyCurrent < omyQuestions.length) {
+            omyShowQuestion();
+          } else {
+            omyCalculateScores();
+            omyShowLoading();
+          }
+        };
+
+        optionBox.appendChild(btn);
+      });
+    }
+
+    function omyPrevQuestion() {
+      if (omyCurrent === 0) {
+        document.getElementById("omyQuestion").style.display = "none";
+        document.getElementById("omyStart").style.display = "block";
+        return;
+      }
+
+      omyCurrent--;
+      omyShowQuestion();
+    }
+
+    function omyCalculateScores() {
+      omyScores = { A: 0, B: 0, C: 0, D: 0 };
+
+      omyAnswers.forEach(function(type) {
+        if (type) omyScores[type]++;
+      });
+    }
+
+    function omyShowLoading() {
+      document.getElementById("omyQuestion").style.display = "none";
+      document.getElementById("omyLoading").style.display = "block";
+
+      document.getElementById("omyLoading").innerHTML = `
+        <div class="omy-loading-wrap">
+          <div class="omy-spinner"></div>
+          <div class="omy-small">ANALYZING YOUR FIT</div>
+          <h2 class="omy-title">
+            당신에게 맞는 잠옷을<br>
+            찾고 있어요...
+          </h2>
+          <p class="omy-desc">
+            선택한 답변을 바탕으로<br>
+            가장 잘 맞는 스타일을 분석 중이에요.
+          </p>
+        </div>
+      `;
+
+      setTimeout(function() {
+        document.getElementById("omyLoading").innerHTML = `
+          <div class="omy-loading-wrap">
+            <div class="omy-check">✓</div>
+            <div class="omy-small">ANALYSIS COMPLETE</div>
+            <h2 class="omy-title">
+              분석이 완료되었어요
+            </h2>
+            <p class="omy-desc">
+              오마이핏이 당신에게 맞는<br>
+              잠옷을 찾았어요.
+            </p>
+          </div>
+        `;
+      }, 1800);
+
+      setTimeout(function() {
+        document.getElementById("omyLoading").style.display = "none";
+        omyShowResult();
+      }, 3000);
+    }
+
+    function omyShowResult() {
+      let topType = "A";
+
+      for (let type in omyScores) {
+        if (omyScores[type] > omyScores[topType]) {
+          topType = type;
+        }
+      }
+
+      const result = omyResults[topType];
+
+      document.getElementById("omyResult").style.display = "block";
+      document.getElementById("omyResult").innerHTML = `
+        <div class="omy-result-page">
+          <img class="omy-main-img" src="${result.mainImage}" alt="${result.title}">
+
+          <div class="omy-small">당신에게 맞는 제품은</div>
+          <h2 class="omy-title">${result.title}</h2>
+          <div class="omy-line"></div>
+
+          <p class="omy-desc">${result.desc}</p>
+
+          <a class="omy-black-btn" href="${result.mainLink}">
+            ${result.title} 보러가기
+          </a>
+
+          <p class="omy-sub-title">나에게 맞는 또 다른 제품이 궁금하다면?</p>
+
+          <div class="omy-product-grid">
+            ${result.products.map(function(product) {
+              return `
+                <a class="omy-rec-card" href="${product.link}">
+                  <img src="${product.image}" alt="${product.name}">
+                  <div class="omy-rec-info">
+                    <strong>${product.name}</strong>
+                    <span>${product.option}</span>
+                  </div>
+                  <p>${product.text}</p>
+                </a>
+              `;
+            }).join("")}
+          </div>
+
+          <button class="omy-black-btn omy-restart" onclick="omyRestart()">
+            ↻ 다시 시작하기
+          </button>
+        </div>
+      `;
+    }
+
+    function omyRestart() {
+      omyCurrent = 0;
+      omyScores = { A: 0, B: 0, C: 0, D: 0 };
+      omyAnswers = [];
+
+      document.getElementById("omyResult").style.display = "none";
+      document.getElementById("omyLoading").style.display = "block";
+
+      document.getElementById("omyLoading").innerHTML = `
+        <div class="omy-loading-wrap">
+          <div class="omy-spinner"></div>
+          <div class="omy-small">RESTARTING TEST</div>
+          <h2 class="omy-title">
+            테스트를 다시 준비하고 있어요...
+          </h2>
+          <p class="omy-desc">
+            잠시만 기다려주세요.
+          </p>
+        </div>
+      `;
+
+      setTimeout(function() {
+        document.getElementById("omyLoading").style.display = "none";
+        document.getElementById("omyStart").style.display = "block";
+      }, 2000);
+    }
+  </script>
+</div>
